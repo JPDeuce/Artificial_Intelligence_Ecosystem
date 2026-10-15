@@ -1,5 +1,7 @@
 # Final Report: Image Classification and Processing
 
+**GitHub Repository:** https://github.com/JPDeuce/Artificial_Intelligence_Ecosystem/tree/main/Image_Classification
+
 ## Part 1: Using the Basic Classifier and Implementing Grad-CAM
 
 ### Part 1-3: Run the Basic Classifier
