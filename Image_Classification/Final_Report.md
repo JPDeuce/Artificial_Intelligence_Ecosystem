@@ -73,7 +73,7 @@ Grad-CAM uses the last convolutional layer because it balances spatial informati
 
 *My Observations*:
 
-Seeing the explanation of how Grad-CAM works and then looking at the heatmap on my image helped me understand how the classifier was able to identify it as a Belgian Malinois. The strongest highlighted areas were around the face and ears, which are distinctive features of this breed. This suggests the model was using relevant visual features to make its prediction rather than relying only on the overall shape of the image. The heatmap helps show which areas contributed to the prediction, although it doesn't prove exactly how the model made its decision.
+Seeing the explanation of how Grad-CAM works and then looking at the heatmap on my image helped me understand how the classifier was able to identify it as a Belgian Malinois. The strongest highlighted areas were around the face, ears, and upper body, while much of the background received less attention. These areas contain features that can help distinguish the breed, which suggests the model was focusing on relevant parts of the dog when making its prediction. The heatmap gives me a better idea of which areas contributed to the classification, although it doesn't prove exactly how the model made its decision.
 
 ## Part 2: Creating and Experimenting with Image Filters
 
