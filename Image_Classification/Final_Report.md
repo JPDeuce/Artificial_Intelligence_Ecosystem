@@ -73,7 +73,7 @@ Grad-CAM uses the last convolutional layer because it balances spatial informati
 
 *My Observations*:
 
-Seeing the explanation of how Grad-CAM works and then looking at the heatmap on my image, it makes a lot more sense how the classifier was able to identify it as a Belgian Malinois. The heatmap highlights mostly the face and ears. Even on a puppy, those features are very distinctive for this breed. It mainly focused on those areas to make its prediction.
+Seeing the explanation of how Grad-CAM works and then looking at the heatmap on my image helped me understand how the classifier was able to identify it as a Belgian Malinois. The strongest highlighted areas were around the face and ears, which are distinctive features of this breed. This suggests the model was using relevant visual features to make its prediction rather than relying only on the overall shape of the image. The heatmap helps show which areas contributed to the prediction, although it doesn't prove exactly how the model made its decision.
 
 ## Part 2: Creating and Experimenting with Image Filters
 
@@ -119,12 +119,12 @@ Seeing the explanation of how Grad-CAM works and then looking at the heatmap on 
 
 ### Part 2-2: Design Your Own Artistic Filter
 
-For my filter, I decided to create a black and white filter. I modified basic_filter.py to create new_filter_bw.py. The filter converts the image to grayscale using PIL's convert('L'), then increases the contrast slightly with ImageEnhance.Contrast to make the blacks darker and whites brighter. This gives it a more classic, high-contrast black and white look rather than a flat gray image.
+For my filter, I decided to create a black and white filter. I modified basic_filter.py to create new_filter_bw.py. The filter converts the image to grayscale using PIL's convert('L'), then increases the contrast slightly with ImageEnhance.Contrast to make the blacks darker and whites brighter. This gives it a more classic, high-contrast black and white look rather than a flat gray image. I experimented with the contrast adjustment to find a balance that made the dog's facial features and fur stand out without losing too much detail in the darker areas.
 
-**Sample output**: `pup_bw.jpg` 
+**Sample output**: `pup_bw.jpg`
 
 *Description of the effect*: The filter removes all color and creates a classic black and white version of the image. By increasing the contrast, it brings out more definition between light and dark areas, making the fur texture and facial features stand out more distinctly. I like how it gives the photo a timeless, classic feel.
 
 ## Reflection on Working with AI
 
-Working with AI to explain code was helpful - it broke things down line by line which made it easier to understand. For the Grad-CAM part especially, having it explained step by step helped me understand what the algorithm was doing and why. It was also helpful being able to ask questions and get clarification. It was a useful learning tool when used to explain concepts rather than just generating everything at once. 
+Working with AI to explain code was helpful because it broke things down line by line, which made it easier to understand. For the Grad-CAM part especially, having it explained step by step helped me understand what the algorithm was doing and why. It was also helpful being able to ask questions and get clarification. I found it most useful when I used it to explain concepts and help with implementation, rather than just generating everything at once. Since I already had some Python experience, I could compare the explanations with my own understanding and better follow how the code worked.
