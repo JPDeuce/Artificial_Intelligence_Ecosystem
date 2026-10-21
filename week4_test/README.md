@@ -189,6 +189,58 @@ part. For every question the correct evidence was retrieved and ranked first; ev
 wrong or refused answer traced back to how the language model was prompted and how many
 tokens it was allowed, not to the index.
 
+### Verbatim console output
+
+The transcripts below are copied from actual runs of the app. They show the system
+loading its models, indexing the document, and answering.
+
+**A short session:**
+
+```text
+Loading embedding model 'sentence-transformers/all-distilroberta-v1'...
+Embedding 110 chunks...
+FAISS index ready: 110 chunks, dimension 768.
+Loading reranker 'cross-encoder/ms-marco-MiniLM-L-6-v2'...
+
+RAG app ready. LLM: qwen3:4b via http://localhost:11434/api/chat
+Thinking mode: on
+Enter 'exit' or 'quit' to end.
+
+Your question: Answer: 1998
+
+Your question: Answer: Ganondorf
+
+Your question:
+```
+
+**A full generated response** — *"How many awards did the game win?"*, which is the
+question that requires reading six separate sentences and summing them:
+
+```text
+The context provides specific information about the awards won by *Ocarina of Time*:
+
+1. **Japan Media Arts Festival**: 1 award ("Grand Prize in the Interactive Art division").
+2. **2nd Annual Interactive Achievement Awards**: 6 awards ("Game of the Year", "Console Game of the Year", "Console Adventure Game of the Year", "Console Role-Playing Game of the Year", "Outstanding Achievement in Interactive Design", "Outstanding Achievement in Software Engineering").
+3. **BAFTA Interactive Entertainment Awards**: 4 awards ("The Games Award", "Innovative Game Award", "The Interactivity Award", "The Computer Programming Award").
+4. **Electronic Gaming Monthly**: 5 awards (3 editors' choice: "Game of the Year for All Systems", "Nintendo 64 Game of the Year", "Action RPG of the Year"; 2 readers' choice: "Best Music", "Best Graphics").
+5. **Edge**: 2 awards ("Game of the Year", "Gameplay Innovation").
+6. **16th Annual Game Audio Network Guild Awards**: 1 award ("Best Game Music Cover/Remix").
+
+The context explicitly states that *Ocarina of Time* won these awards, and there are no mentions of nominations that were not won (e.g., "runner-up" for "Best Sound Effects" and "2nd place" for "Graphical Achievement" are not counted as wins).
+
+**Total awards won**: 1 + 6 + 4 + 5 + 2 + 1 = **19**.
+
+**Answer**: 19
+```
+
+Two things are worth noticing in that answer. The model **enumerates the evidence before
+totalling it**, and it **excludes what does not count** — the "runner-up" for Best Sound
+Effects and the "2nd place" for Graphical Achievement are both in the retrieved context,
+but they are not wins, and the model says so rather than counting them. That is the
+grounding doing real work: a question that invites an inflated number gets the
+defensible one, and the arithmetic is shown so the answer can be checked by hand against
+`Selected_Document.txt`.
+
 ---
 
 ## 3. How retrieval quality varied with chunk_size and chunk_overlap
