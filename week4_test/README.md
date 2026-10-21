@@ -273,6 +273,14 @@ grounding is easy to check against section 3:
 | How does the model turn those chunks into an answer? | Q5 and section 2 — the prompt, and the answers it produced |
 | What is the embedding, and why does its shape matter? | Q1 — dimensionality as the contract between encoder and index |
 
+**On where these answers come from.** They were written by an AI assistant against the
+actual code, console output and `Selected_Document.txt` of this project, and every claim in
+them is checkable against one of those three sources. They are deliberately *not* sample
+outputs from the RAG app, because these five questions are about how the system is built
+rather than about the article — asked one of them, the app would correctly answer *"I don't
+know based on the provided context."* That is the grounding working as designed, and it is
+the same refusal path demonstrated by question 6 in section 2.
+
 ### Q1. What is the embedding dimensionality of this system, and why does that number matter?
 
 The embedding model `all-distilroberta-v1` produces **768-dimensional dense vectors** —
