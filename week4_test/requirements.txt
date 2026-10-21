@@ -1,0 +1,10 @@
+langchain-text-splitters
+sentence-transformers
+numpy
+faiss-cpu
+transformers
+requests
+torch
+beautifulsoup4
+pypdf
+fontTools
